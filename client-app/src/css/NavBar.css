@@ -1,0 +1,28 @@
+#NavBar {
+  height: 50px;
+  width: 100vw;
+  background: #000a12;
+  margin-top: 0;
+}
+
+#NavBar > ul {
+  color: #428e92;
+  font-family: 'PT Serif', 'serif';
+  font-weight: 700;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
+}
+
+#NavBar > ul > li {
+  border-radius: 20px;
+  padding: 0.5rem;
+}
+#NavBar > ul > li:hover {
+  color: white;
+  background: #428e92;
+  box-shadow: black 1px 1px 10px;
+  transition: 0.25s;
+}

@@ -4,12 +4,12 @@ import '../css/App.css'
 import { Provider } from 'react-redux'
 import { Store } from 'redux'
 
-const store: Store = createStore()
+// const store: Store = createStore()
 
 class App extends Component {
   render () {
     return (
-      <Provider store={store}>
+      // <Provider store={store}>
         <div className='App'>
           <NavBar />
           <h1>John 1</h1>
@@ -18,7 +18,7 @@ class App extends Component {
             word was God.
           </p>
         </div>
-      </Provider>
+      // </Provider>
     )
   }
 }

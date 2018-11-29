@@ -5,10 +5,9 @@ class NavBar extends Component {
   render () {
     return (
       <div id='NavBar'>
+      <h3>Bible Phrasing</h3>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Sign In</li>
+          <li>Present</li>
         </ul>
       </div>
     )

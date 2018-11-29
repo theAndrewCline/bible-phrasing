@@ -23,25 +23,25 @@ const params = {
   'include-passage-references': false
 }
 
-const url = (urlParams: any) => {
-  let originalUrl = new URL('https://api.esv.org/v3/passage/text')
-  originalUrl.searchParams = new URLSearchParams(urlParams)
-}
+// const url = (urlParams: any) => {
+//   let originalUrl = new URL('https://api.esv.org/v3/passage/text')
+//   originalUrl.searchParams = new URLSearchParams(urlParams)
+// }
 
-export const receiveVerse = json => {
-  return { type: types.RECEIVE_VERSES, verses: json }
-}
+// export const receiveVerse = json => {
+//   return { type: types.RECEIVE_VERSES, verses: json }
+// }
 
-export const fetchVerse = () => {
-  return dispatch => {
-    return fetch(url(params), {
-      method: 'GET',
-      mode: 'cors',
-      credentials: 'include',
-      cache: 'default',
-      headers: {
-        Authorization: 'Token' + API_KEY
-      }
-    })
-  }
-}
+// export const fetchVerse = () => {
+//   return dispatch => {
+//     return fetch(url(params), {
+//       method: 'GET',
+//       mode: 'cors',
+//       credentials: 'include',
+//       cache: 'default',
+//       headers: {
+//         Authorization: 'Token' + API_KEY
+//       }
+//     })
+//   }
+// }

@@ -12,9 +12,11 @@ Things still to add
 
 ## Starting It Up 
 
-you will need to apply for an ESV api key at api.esv.org 
+you will need to apply for an ESV api key at api.esv.org
 
-you can place the token in a .env file in client-app. dot-env comes with the the app. 
+you can place the token in a .env file in client-app. dot-env comes with the the app.
+
+Token should be placed in a variable called ESV_API_TOKEN
 
 cd to client-app and npm install 
 

@@ -23,8 +23,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "CI=true yarn test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "CI=true yarn test"
     }
   },
   "eslintConfig": {

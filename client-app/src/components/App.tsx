@@ -17,8 +17,8 @@ class App extends Component<{}, {passages: any[]}> {
   }
 
   public componentWillMount () {
-    fetchPassage('John+3:16-18').then(response => { 
-      this.setState({passages: response })
+    fetchPassage('John+3:16-20').then(passages => { 
+      this.setState({passages})
     })
   }
   public render () {
@@ -27,8 +27,8 @@ class App extends Component<{}, {passages: any[]}> {
       <div className='App'>
         <NavBar />
         <h1>John 1</h1>
-        {this.state.passages.map((passage) => <p>{passage}</p>)}
-        </div>
+        {this.state.passages.map((passage, i) => <p key={i}>{passage}</p>)}
+      </div>
       // </Provider>
     )
   }

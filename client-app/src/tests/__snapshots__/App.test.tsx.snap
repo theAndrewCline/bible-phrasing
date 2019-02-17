@@ -8,6 +8,5 @@ exports[`<App /> should match snaptshot 1`] = `
   <h1>
     John 1
   </h1>
-  <p />
 </div>
 `;

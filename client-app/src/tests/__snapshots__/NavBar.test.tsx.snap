@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBar /> should match snapshot 1`] = `
+<div
+  id="NavBar"
+>
+  <h3>
+    Bible Phrasing
+  </h3>
+  <ul>
+    <li>
+      Present
+    </li>
+  </ul>
+</div>
+`;

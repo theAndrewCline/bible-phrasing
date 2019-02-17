@@ -3,22 +3,33 @@ import NavBar from './NavBar'
 import '../css/App.css'
 import { Provider } from 'react-redux'
 import { Store } from 'redux'
+import { fetchPassage } from '../js/actions/actions';
 
-const store: Store = createStore()
+// const store: Store = createStore()
 
-class App extends Component {
-  render () {
+class App extends Component<{}, {passages: any[]}> {
+  constructor (props: any) {
+    super(props)
+
+    this.state = {
+      passages: []
+    }
+  }
+
+  public componentWillMount () {
+    fetchPassage('John+3:16-20').then(passages => { 
+      this.setState({passages})
+    })
+  }
+  public render () {
     return (
-      <Provider store={store}>
-        <div className='App'>
-          <NavBar />
-          <h1>John 1</h1>
-          <p>
-            In the beginning, there was the Word. The Word was with God and the
-            word was God.
-          </p>
-        </div>
-      </Provider>
+      // <Provider store={store}>
+      <div className='App'>
+        <NavBar />
+        <h1>John 1</h1>
+        {this.state.passages.map((passage, i) => <p key={i}>{passage}</p>)}
+      </div>
+      // </Provider>
     )
   }
 }

@@ -21,6 +21,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "CI=true yarn test"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -31,6 +36,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^7.2.1",
+    "@commitlint/config-conventional": "^7.5.0",
     "@types/dotenv": "^6.1.0",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.9",
@@ -39,6 +46,7 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "enzyme-to-json": "^3.3.4",
+    "husky": "^1.2.0",
     "tslint": "^5.11.0",
     "tslint-config-standard": "^8.0.1",
     "typescript": "^3.1.6"

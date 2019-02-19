@@ -17,7 +17,7 @@ class App extends Component<{}, {passages: any[]}> {
   }
 
   public componentWillMount () {
-    fetchPassage('John+3:16-20').then(passages => { 
+    fetchPassage('John+3').then(passages => { 
       this.setState({passages})
     })
   }

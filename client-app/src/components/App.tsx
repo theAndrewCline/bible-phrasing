@@ -48,6 +48,9 @@ class App extends Component<{}, {
 
   selectPassage () {
     this.setState({ selectingPassage: true })
+    fetchPassage('John+3').then(passages => {
+      this.setState({ passages })
+    })
   }
 
   setPassage (book: string, chapter: string) {
@@ -72,13 +75,13 @@ class App extends Component<{}, {
 
         {this.state.passages.map((passage, i) => <p key={i}>{passage}</p>)}
 
-        { this.state.selectingPassage ?
-        <Modal
-          closeModal={this.closeModal}>
-          {this.state.selectedBook === ''
-          ? <BookList selectBook={this.selectBook} />
-          : <BookChapters setPassage={this.setPassage} bookTitle={this.state.selectedBook} />}
-        </Modal> : null }
+        {this.state.selectingPassage ?
+          <Modal
+            closeModal={this.closeModal}>
+            {this.state.selectedBook === ''
+              ? <BookList selectBook={this.selectBook} />
+              : <BookChapters setPassage={this.setPassage} bookTitle={this.state.selectedBook} />}
+          </Modal> : null}
       </div>
       // </Provider>
     )

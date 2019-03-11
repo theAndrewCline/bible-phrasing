@@ -3,7 +3,10 @@ import NavBar from './NavBar'
 import '../css/App.css'
 import { Provider } from 'react-redux'
 import { Store } from 'redux'
-import { fetchPassage } from '../js/actions/actions';
+import { fetchPassage } from '../js/actions/actions'
+import { BookList } from './BookList'
+import { BookChapters } from './BookChapters'
+import { Modal } from './Modal'
 
 // const store: Store = createStore()
 
@@ -11,7 +14,8 @@ class App extends Component<{}, {
   passages: any[],
   selectingPassage: boolean,
   book: string,
-  title: string
+  title: string,
+  selectedBook: string
 }> {
   constructor (props: any) {
     super(props)
@@ -20,30 +24,36 @@ class App extends Component<{}, {
       passages: [],
       selectingPassage: false,
       book: '',
-      title: ''
+      title: '',
+      selectedBook: ''
     }
 
     this.selectPassage = this.selectPassage.bind(this)
     this.closeModal = this.closeModal.bind(this)
     this.setPassage = this.setPassage.bind(this)
+    this.selectBook = this.selectBook.bind(this)
   }
 
   public componentWillMount () {
     this.setPassage('John', '3')
   }
 
-  selectPassage () {
-    this.setState({ selectingPassage: true })
+  closeModal () {
+    this.setState({ selectedBook: '', selectingPassage: false })
   }
 
-  closeModal () {
-    this.setState({ selectingPassage: false })
+  selectBook (bookTitle: string) {
+    this.setState({ selectedBook: bookTitle })
+  }
+
+  selectPassage () {
+    this.setState({ selectingPassage: true })
   }
 
   setPassage (book: string, chapter: string) {
     fetchPassage(`${book}+${chapter}`)
       .then(({ passages, title }) => {
-        this.setState({ passages, title, selectingPassage: false })
+        this.setState({ passages, title, selectingPassage: false, selectedBook: '' })
       })
   }
 
@@ -65,39 +75,14 @@ class App extends Component<{}, {
         { this.state.selectingPassage ?
         <Modal
           closeModal={this.closeModal}>
-          <h1>Torah</h1>
-          <ul>
-            <li onClick={() => this.setPassage('Genesis', '1')}>Genesis</li>
-            <li onClick={() => this.setPassage('Exodus', '1')}>Exodus</li>
-            <li onClick={() => this.setPassage('Leviticus', '1')}>Leviticus</li>
-            <li onClick={() => this.setPassage('Numbers', '1')}>Numbers</li>
-            <li onClick={() => this.setPassage('Deuteronomy', '1')}>Deuteronomy</li>
-          </ul>
+          {this.state.selectedBook === ''
+          ? <BookList selectBook={this.selectBook} />
+          : <BookChapters setPassage={this.setPassage} bookTitle={this.state.selectedBook} />}
         </Modal> : null }
       </div>
       // </Provider>
     )
   }
-}
-
-interface ModalProps {
-  closeModal():void,
-  children: any
-}
-
-function Modal (props: ModalProps) {
-  const { closeModal, children } = props
-  return (
-    <div>
-      <div
-        className="modal-backdrop"
-        onClick={() => closeModal() }>
-      </div>
-      <div className="modal">
-        {children}
-      </div>
-    </div>
-  )
 }
 
 export default App

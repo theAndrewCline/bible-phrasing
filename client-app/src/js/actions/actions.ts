@@ -18,5 +18,5 @@ export const fetchPassage = (passageQuery: string): Promise<any> => {
         }
     })
         .then(response => response.json())
-        .then(json => json.passages)
+        .then(json => ({ passages: json.passages, title: json.canonical }))
 }

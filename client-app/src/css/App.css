@@ -8,3 +8,23 @@ h1 {
   text-align: center;
   font-family: 'PT Serif', 'serif';
 }
+
+.modal-backdrop {
+  background: rgba(0,0,0,0.5);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.modal {
+  background: white;
+  height: 300px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 100px;
+  width: 400px;
+}

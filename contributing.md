@@ -34,6 +34,7 @@ If there are any questions please post them on the #contributing-questions chann
 ### Reporting a Bug
 
 If you are reporting a bug, please provide the following: 
+ 
  - A description of the event prior to the issue
  - A description of the expected behavior
  - A description of the actual behavior

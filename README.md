@@ -6,6 +6,10 @@ The Goal of this project is to create an interactive editor that that will open 
 
 For submitting ideas or feature requests please submit to our [github issues board](https://github.com/theAndrewCline/bible-phrasing/issues).
 
+## Discord 
+
+Join the comminity on Discord, click [here](https://discord.gg/u5RpzVw)
+
 ## WIP
 This project is currently a work in progress.
 

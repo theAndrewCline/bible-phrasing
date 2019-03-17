@@ -8,7 +8,7 @@ interface Passage {
     passages: any[]
 }
 
-export const fetchPassage = (passageQuery: string): Promise<any[]> => {
+export const fetchPassage = (passageQuery: string): Promise<any> => {
     const API_KEY = process.env.REACT_APP_ESV_API_TOKEN
     const URL: string = `https://api.esv.org/v3/passage/text/?q=${passageQuery}&include-footnotes=False&include-headings=False&include-passage-references=False&include-short-copyright=False`
 
@@ -18,5 +18,5 @@ export const fetchPassage = (passageQuery: string): Promise<any[]> => {
         }
     })
         .then(response => response.json())
-        .then(json => json.passages)
+        .then(json => ({ passages: json.passages, title: json.canonical }))
 }

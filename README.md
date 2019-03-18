@@ -1,23 +1,18 @@
-# bible-phrasing
-react app for bible study
+# Bible Phrasing App
 
-This project is a WIP 
+The Bible Phrasing App is meant to enable communities to read and study the bible together, either in person or online.
 
-Things still to add 
+The Goal of this project is to create an interactive editor that that will open a selected passage and allow the user to highlight, annotate, rearange the target passage. The user should also be able to share the results quickly and easily, if the editting session is live, emailing ideas to a friend, or sharing it on our community discord chanel. 
 
-- [ ] Create and Style components
-- [ ] Create way of fetching bible verses
-- [ ] Create API to interfaces with multiple bible APIs
+For submitting ideas or feature requests please submit to our [github issues board](https://github.com/theAndrewCline/bible-phrasing/issues).
 
+## Discord 
 
-## Starting It Up 
+Join the comminity on Discord, click [here](https://discord.gg/u5RpzVw)
 
-you will need to apply for an ESV api key at api.esv.org
+## WIP
+This project is currently a work in progress.
 
-you can place the token in a .env file in client-app. dot-env comes with the the app.
+## Contributing
 
-Token should be placed in a variable called ESV_API_TOKEN
-
-cd to client-app and npm install 
-
-Application was bootstraped from create-react-app and has not been ejected. 
+This project is open source and we are looking for pull requests. Please Read Contributing Guidelines to learn how to contribute.

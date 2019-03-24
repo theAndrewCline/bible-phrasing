@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should match snaptshot 1`] = `
+<div
+  className="App"
+>
+  <NavBar />
+  <button
+    onClick={[Function]}
+  >
+    Select A Passage
+  </button>
+  <h1 />
+</div>
+`;

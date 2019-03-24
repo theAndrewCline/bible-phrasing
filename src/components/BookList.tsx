@@ -18,6 +18,7 @@ function BookList (props: any) {
       }}>
         {books.map(bookName => (
         <li
+          key={bookName}
           style={{
             background: 'black',
             color: 'white',

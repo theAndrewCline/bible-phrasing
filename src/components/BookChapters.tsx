@@ -2,7 +2,7 @@ import React from 'react'
 import { bibleChapters } from '../bible-chapters'
 
 function BookChapters (props: any) {
-  const { bookTitle, setPassage } = props
+  const { bookTitle, getPassage } = props
   const numberOfChapters = bibleChapters[bookTitle]
   const chapters = []
   for (let i = 0; i < numberOfChapters; i += 1) { chapters.push(i + 1) }
@@ -26,7 +26,7 @@ function BookChapters (props: any) {
               margin: '0.5em'
             }}
             key={x}
-            onClick={() => setPassage(bookTitle, x)}>
+            onClick={() => getPassage(bookTitle, x)}>
             {x}
           </li>
         ))}

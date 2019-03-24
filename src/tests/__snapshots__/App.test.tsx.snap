@@ -5,8 +5,17 @@ exports[`<App /> should match snaptshot 1`] = `
   className="App"
 >
   <NavBar />
+<<<<<<< HEAD
   <h1>
     John 1
   </h1>
+=======
+  <button
+    onClick={[Function]}
+  >
+    Select A Passage
+  </button>
+  <h1 />
+>>>>>>> feat: add hooks
 </div>
 `;

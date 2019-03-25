@@ -7,6 +7,10 @@ import { fetchPassage } from '../js/actions/actions'
 import { BookList } from './BookList'
 import { BookChapters } from './BookChapters'
 import { Modal } from './Modal'
+import TargetPassage from './TargetPassage';
+
+import '../../node_modules/react-grid-layout/css/styles.css'
+import '../../node_modules/react-resizable/css/styles.css'
 
 // const store: Store = createStore()
 
@@ -49,7 +53,8 @@ function App () {
 
       <h1>{title}</h1>
 
-      {passages.map((passage, i) => <p key={i}>{passage}</p>)}
+      <TargetPassage passages={passages} />
+
 
       {selectingPassage ?
         <Modal

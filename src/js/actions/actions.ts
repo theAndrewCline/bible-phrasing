@@ -1,11 +1,8 @@
 import * as types from './actionTypes'
+import { Passages } from '../../defintions/App';
 
-interface Passage {
-    query: string
-    canonical: string
-    parsed: any[]
-    passage_meta: any[]
-    passages: any[]
+export const parsePassages = (unparsedPassages: Array<string>) : Passages => {
+    return unparsedPassages[0].split('[')
 }
 
 export const fetchPassage = (passageQuery: string): Promise<any> => {
@@ -18,5 +15,5 @@ export const fetchPassage = (passageQuery: string): Promise<any> => {
         }
     })
         .then(response => response.json())
-        .then(json => ({ passages: json.passages, title: json.canonical }))
+        .then(json => ({ passages: parsePassages(json.passages), title: json.canonical }))
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import NavBar from './NavBar'
 import '../css/App.css'
 import { Provider } from 'react-redux'
@@ -10,79 +10,57 @@ import { Modal } from './Modal'
 
 // const store: Store = createStore()
 
-class App extends Component<{}, {
-  passages: any[],
-  selectingPassage: boolean,
-  book: string,
-  title: string,
-  selectedBook: string
-}> {
-  constructor (props: any) {
-    super(props)
+function App () {
+  const [ passages, setPassages ]  = useState([])
+  const [ selectingPassage, setSelectingPassage ] = useState(false)
+  const [ title, setTitle ] = useState('')
+  const [ book, setBook ] = useState('')
+  const [ selectedBook, setSelectedBook ] = useState('')
+  const [ initialized, setInitialized ] = useState(true)
 
-    this.state = {
-      passages: [],
-      selectingPassage: false,
-      book: '',
-      title: '',
-      selectedBook: ''
-    }
-
-    this.selectPassage = this.selectPassage.bind(this)
-    this.closeModal = this.closeModal.bind(this)
-    this.setPassage = this.setPassage.bind(this)
-    this.selectBook = this.selectBook.bind(this)
+  const closeModal = () => {
+    setSelectingPassage(false)
+    setBook('')
   }
 
-  public componentWillMount () {
-    this.setPassage('John', '3')
-  }
-
-  closeModal () {
-    this.setState({ selectedBook: '', selectingPassage: false })
-  }
-
-  selectBook (bookTitle: string) {
-    this.setState({ selectedBook: bookTitle })
-  }
-
-  selectPassage () {
-    this.setState({ selectingPassage: true })
-  }
-
-  setPassage (book: string, chapter: string) {
+  const getPassages = (book:string, chapter:string) => {
     fetchPassage(`${book}+${chapter}`)
       .then(({ passages, title }) => {
-        this.setState({ passages, title, selectingPassage: false, selectedBook: '' })
+        setPassages(passages)
+        setTitle(title)
+        setSelectingPassage(false)
+        setSelectedBook('')
       })
   }
 
-  public render () {
-    return (
-      // <Provider store={store}>
-      <div className='App'>
-        <NavBar />
+  useEffect(() => {
+    getPassages('John', '1')
+  }, [ initialized ])
 
-        <button
-          onClick={() => this.selectPassage()}>
-          Select A Passage
-        </button>
+  return (
+    // <Provider store={store}>
+    <div className='App'>
+      <NavBar />
 
-        <h1>{this.state.title}</h1>
+      <button
+        onClick={() => setSelectingPassage(true)}>
+        Select A Passage
+      </button>
 
-        {this.state.passages.map((passage, i) => <p key={i}>{passage}</p>)}
+      <h1>{title}</h1>
 
-        { this.state.selectingPassage ?
-        <Modal
-          closeModal={this.closeModal}>
-          {this.state.selectedBook === ''
-          ? <BookList selectBook={this.selectBook} />
-          : <BookChapters setPassage={this.setPassage} bookTitle={this.state.selectedBook} />}
-        </Modal> : null }
-      </div>
-      // </Provider>
-    )
-  }
+      {passages.map((passage, i) => <p key={i}>{passage}</p>)}
+
+      { selectingPassage ?
+      <Modal
+        closeModal={closeModal}>
+        {selectedBook === ''
+        ? <BookList selectBook={setSelectedBook} />
+        : <BookChapters getPassage={getPassages} bookTitle={selectedBook} />}
+      </Modal> : null }
+    </div>
+    // </Provider>
+  )
 }
 
 export default App
